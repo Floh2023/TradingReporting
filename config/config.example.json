@@ -1,0 +1,26 @@
+{
+  "aws": {
+    "region": "us-east-1",
+    "secretId": "asistente-analisis-activos/credentials"
+  },
+  "google": {
+    "sheetId": "YOUR_SHEET_ID",
+    "tickersSheetName": "Tickers",
+    "resultsSheetName": "Results"
+  },
+  "email": {
+    "from": "you@example.com",
+    "to": [
+      "you@example.com"
+    ]
+  },
+  "market": {
+    "timezone": "America/New_York",
+    "interval": "1h",
+    "scheduleEt": [
+      "10:30",
+      "13:30",
+      "15:30"
+    ]
+  }
+}
