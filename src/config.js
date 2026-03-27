@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { loadSecrets } = require("./secrets");
 
 function readJsonFile(filePath) {
   const raw = fs.readFileSync(filePath, "utf8");
@@ -50,8 +51,13 @@ function loadConfigFile() {
   return config;
 }
 
-function loadConfig() {
-  return loadConfigFile();
+async function loadConfig() {
+  const config = loadConfigFile();
+  const secrets = await loadSecrets(config.aws);
+  return {
+    ...config,
+    secrets,
+  };
 }
 
 module.exports = {
