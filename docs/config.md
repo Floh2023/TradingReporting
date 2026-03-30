@@ -17,6 +17,12 @@ Copiar `config/config.example.json` a `config/config.json` y completar los campo
 - `market.interval`: Intervalo de velas (ej. `1h`)
 - `market.scheduleEt`: Horarios de ejecucion en ET (ej. `["10:30","13:30","15:30"]`)
 
+## Formato de la hoja de simbolos (Google Sheets)
+- Nombre de hoja: el valor de `google.tickersSheetName` (por defecto `Tickers`).
+- Columna A con encabezado `Symbol` en la celda `A1`.
+- Los simbolos empiezan en `A2` (uno por fila).
+- Celdas vacias se ignoran.
+
 ## Secretos en archivo .env
 Crear un archivo `.env` en la raiz del proyecto (no commitearlo) con estas claves:
 - `TWELVE_DATA_API_KEY`
