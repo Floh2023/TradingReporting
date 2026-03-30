@@ -8,8 +8,6 @@ El sistema lee configuracion no sensible desde:
 Copiar `config/config.example.json` a `config/config.json` y completar los campos.
 
 ### Campos esperados (config.json)
-- `aws.region`: Region AWS (ej. `us-east-1`)
-- `aws.secretId`: Nombre o ARN del secreto en AWS Secrets Manager
 - `google.sheetId`: ID del Google Sheet
 - `google.tickersSheetName`: Hoja con la lista de simbolos
 - `google.resultsSheetName`: Hoja de resultados
@@ -19,19 +17,17 @@ Copiar `config/config.example.json` a `config/config.json` y completar los campo
 - `market.interval`: Intervalo de velas (ej. `1h`)
 - `market.scheduleEt`: Horarios de ejecucion en ET (ej. `["10:30","13:30","15:30"]`)
 
-## Secretos en AWS Secrets Manager
-El secreto debe ser un JSON con estas claves minimas:
-- `twelveDataApiKey`
-- `googleClientId`
-- `googleClientSecret`
-- `googleRefreshToken`
+## Secretos en archivo .env
+Crear un archivo `.env` en la raiz del proyecto (no commitearlo) con estas claves:
+- `TWELVE_DATA_API_KEY`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REFRESH_TOKEN`
 
-Ejemplo de secreto:
+Ejemplo de `.env`:
 ```
-{
-  "twelveDataApiKey": "TD_API_KEY",
-  "googleClientId": "GOOGLE_CLIENT_ID",
-  "googleClientSecret": "GOOGLE_CLIENT_SECRET",
-  "googleRefreshToken": "GOOGLE_REFRESH_TOKEN"
-}
+TWELVE_DATA_API_KEY=TD_API_KEY
+GOOGLE_CLIENT_ID=GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET=GOOGLE_CLIENT_SECRET
+GOOGLE_REFRESH_TOKEN=GOOGLE_REFRESH_TOKEN
 ```

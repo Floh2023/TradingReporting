@@ -1,51 +1,49 @@
-const {
-  SecretsManagerClient,
-  GetSecretValueCommand,
-} = require("@aws-sdk/client-secrets-manager");
+const path = require("path");
+const dotenv = require("dotenv");
 
-const REQUIRED_SECRET_KEYS = [
-  "twelveDataApiKey",
-  "googleClientId",
-  "googleClientSecret",
-  "googleRefreshToken",
+const REQUIRED_ENV_VARS = [
+  "TWELVE_DATA_API_KEY",
+  "GOOGLE_CLIENT_ID",
+  "GOOGLE_CLIENT_SECRET",
+  "GOOGLE_REFRESH_TOKEN",
 ];
 
-function validateSecrets(secrets) {
-  const missing = REQUIRED_SECRET_KEYS.filter((key) => !secrets[key]);
-  if (missing.length > 0) {
-    throw new Error(
-      `Missing secret keys: ${missing.join(", ")}`
-    );
+function resolveDotenvPath() {
+  if (process.env.DOTENV_PATH) {
+    return path.resolve(process.env.DOTENV_PATH);
+  }
+  return path.join(process.cwd(), ".env");
+}
+
+function loadDotenv(dotenvPath) {
+  const result = dotenv.config({ path: dotenvPath });
+  if (result.error) {
+    throw new Error(`Unable to load .env file at ${dotenvPath}`);
   }
 }
 
-async function loadSecrets(awsConfig) {
-  if (!awsConfig || !awsConfig.region || !awsConfig.secretId) {
-    throw new Error("aws.region and aws.secretId are required in config");
+function validateEnv() {
+  const missing = REQUIRED_ENV_VARS.filter((key) => !process.env[key]);
+  if (missing.length > 0) {
+    throw new Error(`Missing env vars: ${missing.join(", ")}`);
   }
+}
 
-  const client = new SecretsManagerClient({ region: awsConfig.region });
-  const response = await client.send(
-    new GetSecretValueCommand({ SecretId: awsConfig.secretId })
-  );
+function loadSecrets() {
+  const dotenvPath = resolveDotenvPath();
+  loadDotenv(dotenvPath);
+  validateEnv();
 
-  if (!response.SecretString) {
-    throw new Error("SecretString is empty for the given secret");
-  }
-
-  let secrets;
-  try {
-    secrets = JSON.parse(response.SecretString);
-  } catch (error) {
-    throw new Error("SecretString is not valid JSON");
-  }
-
-  validateSecrets(secrets);
-  return secrets;
+  return {
+    twelveDataApiKey: process.env.TWELVE_DATA_API_KEY,
+    googleClientId: process.env.GOOGLE_CLIENT_ID,
+    googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    googleRefreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+  };
 }
 
 module.exports = {
   loadSecrets,
-  validateSecrets,
-  REQUIRED_SECRET_KEYS,
+  resolveDotenvPath,
+  REQUIRED_ENV_VARS,
 };

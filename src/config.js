@@ -16,8 +16,6 @@ function resolveConfigPath() {
 
 function validateConfig(config) {
   const required = [
-    ["aws", "region"],
-    ["aws", "secretId"],
     ["google", "sheetId"],
     ["google", "tickersSheetName"],
     ["google", "resultsSheetName"],
@@ -53,7 +51,7 @@ function loadConfigFile() {
 
 async function loadConfig() {
   const config = loadConfigFile();
-  const secrets = await loadSecrets(config.aws);
+  const secrets = await loadSecrets();
   return {
     ...config,
     secrets,

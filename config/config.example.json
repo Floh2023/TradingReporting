@@ -1,8 +1,4 @@
 {
-  "aws": {
-    "region": "us-east-1",
-    "secretId": "asistente-analisis-activos/credentials"
-  },
   "google": {
     "sheetId": "YOUR_SHEET_ID",
     "tickersSheetName": "Tickers",
