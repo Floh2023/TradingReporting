@@ -5,9 +5,11 @@ Last updated: 2026-03-30
 ## Completed
 - T1.1 define config format
 - T1.2 load secrets from env
+- T1.3 define tickers sheet format
+- T1.4 load tickers from sheets
 
 ## Current / Next
-- Next task: T1.3
+- Next task: T1.5
 - Status: READY
 
 ## Important constraints
