@@ -122,7 +122,7 @@ Test/Verification: Simular fallas y verificar detencion.
 
 ## Execution status
 Status: IN_PROGRESS
-Current task: T1.2
-Completed tasks: T1.1
-Progress: 1/12
+Current task: T1.3
+Completed tasks: T1.1, T1.2
+Progress: 2/12
 Last updated: 2026-03-30

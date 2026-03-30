@@ -4,9 +4,10 @@ Last updated: 2026-03-30
 
 ## Completed
 - T1.1 define config format
+- T1.2 load secrets from env
 
 ## Current / Next
-- Next task: T1.2
+- Next task: T1.3
 - Status: READY
 
 ## Important constraints
