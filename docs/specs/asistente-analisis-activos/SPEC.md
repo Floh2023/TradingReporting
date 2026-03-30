@@ -31,7 +31,7 @@ The SPEC is the source of truth. If implementation deviates, update the SPEC + T
 - Entrega: Google Sheets + email (Gmail API).
 - Orden de prioridad: RSI mas bajo primero.
 - Detener ejecucion si falla una API critica.
-- Credenciales via AWS Secrets Manager.
+- Credenciales via archivo .env.
 
 ## Definicion de senal
 - Regla final: RSI < 25 **y** MACD histograma cruza de negativo a positivo.
@@ -40,6 +40,8 @@ The SPEC is the source of truth. If implementation deviates, update the SPEC + T
 
 ## Datos y entradas
 - Lista de simbolos: Google Sheet provisto por el usuario (lista fija).
+- Configuracion no sensible: `config/config.json`.
+- Secretos: archivo `.env` (no commitear).
 - Parametros de indicador:
   - RSI: periodo 14, umbral < 25.
   - MACD: 12/26/9.
@@ -70,11 +72,12 @@ The SPEC is the source of truth. If implementation deviates, update the SPEC + T
 - Si falla la API de datos o Google/Gmail: detener ejecucion y reportar en logs.
 
 ## Seguridad
-- Credenciales gestionadas via AWS Secrets Manager.
+- Credenciales gestionadas via archivo `.env`.
 - No guardar secretos en el repo.
 
 ## Preguntas abiertas
 
 
 ## Changelog
+- 2026-03-30 — Cambio de AWS Secrets Manager a archivo `.env` para secretos.
 - 2026-03-26 — Spec finalizada con parametros operativos y de indicadores.

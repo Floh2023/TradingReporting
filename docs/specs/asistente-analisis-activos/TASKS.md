@@ -10,15 +10,15 @@ Depends on: []
 Risks: Campos incompletos pueden bloquear integraciones.
 Test/Verification: Revisar que todos los modulos referencian solo campos definidos.
 
-2. `T1.2` Integrar AWS Secrets Manager para credenciales.
-Goal: Leer secretos desde AWS Secrets Manager en tiempo de ejecucion.
-Inputs: ARN o nombre del secreto y permisos AWS.
-Outputs: Modulo/utilidad de acceso a secretos.
-Steps: Configurar cliente AWS, resolver secreto y mapearlo a la config.
-Done condition: El sistema obtiene credenciales sin depender de archivos locales.
+2. `T1.2` Implementar carga de secretos desde archivo .env.
+Goal: Leer secretos desde un archivo .env en tiempo de ejecucion.
+Inputs: Archivo .env con claves requeridas.
+Outputs: Modulo/utilidad de carga de secretos.
+Steps: Definir variables esperadas, cargar .env y validar claves.
+Done condition: El sistema obtiene credenciales desde .env sin depender de AWS.
 Depends on: [T1.1]
-Risks: Permisos insuficientes o region incorrecta.
-Test/Verification: Ejecutar lectura de secreto con credenciales de prueba.
+Risks: Variables faltantes o .env no encontrado.
+Test/Verification: Ejecutar lectura de .env con valores de prueba.
 
 3. `T1.3` Especificar formato de la lista de simbolos en Google Sheets.
 Goal: Definir columna y encabezado esperados para simbolos.
@@ -122,7 +122,7 @@ Test/Verification: Simular fallas y verificar detencion.
 
 ## Execution status
 Status: IN_PROGRESS
-Current task: T1.3
-Completed tasks: T1.1, T1.2
-Progress: 2/12
-Last updated: 2026-03-26
+Current task: T1.2
+Completed tasks: T1.1
+Progress: 1/12
+Last updated: 2026-03-30

@@ -10,3 +10,4 @@
 8. Si falla una API critica (Twelve Data, Google Sheets o Gmail), la ejecucion se detiene y se registra el error.
 9. Existe un modo de backtesting (1 ano) que usa datos historicos 1h y produce: senales totales, win rate y retorno medio a 5/10/20 velas.
 10. La ejecucion programada corre a las 10:30, 13:30 y 15:30 ET.
+11. Las credenciales se cargan desde un archivo .env y no requieren AWS Secrets Manager.

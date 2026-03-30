@@ -2,7 +2,7 @@
 
 1) Definir configuracion y entradas
 - Estructura de configuracion (API keys, IDs de Google Sheets, email destino).
-- Acceso a credenciales via AWS Secrets Manager.
+- Acceso a credenciales via archivo .env.
 - Formato esperado de la lista de simbolos en Google Sheets.
 
 2) Implementar pipeline de deteccion
