@@ -8,9 +8,10 @@ Last updated: 2026-03-30
 - T1.3 define tickers sheet format
 - T1.4 load tickers from sheets
 - T1.5 fetch 1h candles
+- T1.6 compute RSI and MACD
 
 ## Current / Next
-- Next task: T1.6
+- Next task: T1.7
 - Status: READY
 
 ## Important constraints
