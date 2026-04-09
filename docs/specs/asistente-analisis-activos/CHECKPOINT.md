@@ -7,9 +7,10 @@ Last updated: 2026-03-30
 - T1.2 load secrets from env
 - T1.3 define tickers sheet format
 - T1.4 load tickers from sheets
+- T1.5 fetch 1h candles
 
 ## Current / Next
-- Next task: T1.5
+- Next task: T1.6
 - Status: READY
 
 ## Important constraints
